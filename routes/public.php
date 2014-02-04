@@ -113,7 +113,7 @@ $app->post('/quiz/process/', function () use ($app) {
                     
                 } else {
                     $username = trim(strip_tags(stripslashes($username)));
-                    if ($quiz->registerUser($username)) {
+                    if ($simple->registerUser($username)) {
                         $session->set('user', $username);
                         $session->set('score', 0);
                         $session->set('correct', array());

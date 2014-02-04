@@ -1,6 +1,11 @@
 <?php
 namespace SimpleQuiz\Utils\Base;
 
+/*
+ *
+ * @author Ben Hall
+ */
+
 interface QuizInterface {
     
     public function setId($id);
@@ -35,11 +40,11 @@ interface QuizInterface {
     
     public function populateQuestions();
     
+    public function populateUsers();
+    
     public function getUsers();
     
     public function getLeaders($num);
-    
-    public function registerUser($username);
     
     public function addQuizTaker($user,$score,$start,$end,$timetaken);
 }

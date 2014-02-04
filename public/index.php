@@ -22,12 +22,8 @@ require '../routes/admin.php';
 
 $app->session = $session;
 
-$app->leaderboard = function() {
-    return new \SimpleQuiz\Utils\LeaderBoard();
-};
-
-$app->quiz = function ($app) {
-    return new \SimpleQuiz\Utils\Quiz($app);
+$app->quiz = function () {
+    return new \SimpleQuiz\Utils\Quiz();
 };
 
 $app->admin = function ($app) {

@@ -4,7 +4,7 @@ namespace SimpleQuiz\Tests;
 require 'vendor/autoload.php';
 /**
 *
-* @author elanman
+* @author Ben Hall
 */
 class QuizTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,12 +14,8 @@ class QuizTest extends \PHPUnit_Framework_TestCase
         \ORM::configure('username', 'travis');
         \ORM::configure('password', '');
         \ORM::configure('return_result_sets', true);
-
-        $this->app = new \Slim\Helper\Set();
-        $this->app->leaderboard = function() {
-            return new \SimpleQuiz\Utils\LeaderBoard();
-        };
-        $this->quiz = new \SimpleQuiz\Utils\Quiz($this->app);
+        
+        $this->quiz = new \SimpleQuiz\Utils\Quiz();
     }
 
     public function testsetId()

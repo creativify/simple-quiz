@@ -1,9 +1,9 @@
 <?php
 namespace SimpleQuiz\Utils;
 
-class LeaderBoard implements Base\LeaderBoardInterface {
+class LeaderBoard {
     
-    public function getMembers($quizid, $number = false)
+    public static function getMembers($quizid)
     {  
         $members = \ORM::for_table('users')
                 ->left_outer_join('quiz_users', array('quiz_users.user_id', '=', 'users.id'))
@@ -11,16 +11,10 @@ class LeaderBoard implements Base\LeaderBoardInterface {
                 ->order_by_desc('quiz_users.score')
                 ->find_array();
         
-        if ($number)
-        {
-            usort($members, 'memberSort');
-            return array_slice($members, 0, $number, true);
-        }
-        
         return $members;
     }
     
-    public function addMember($quizid, $user,$score,$start,$end,$timetaken)
+    public static function addMember($quizid, $user,$score,$start,$end,$timetaken)
     {  
         //this should be called at start of quiz and fail if user already exists
         //record should be updated at end of quiz with score etc

@@ -1,6 +1,11 @@
 <?php
 namespace SimpleQuiz\Utils;
 
+/*
+ *
+ * @author Ben Hall
+ */
+
 class Simple implements Base\SimpleInterface {
     
     public function addQuiz(Array $quizmeta)
@@ -72,6 +77,19 @@ class Simple implements Base\SimpleInterface {
         
         return $quizzes;
     }
+    
+    /*
+     * @param string 
+     * @return bool
+     */
+    public function registerUser($username)
+    {
+        //will return false if no matching record found
+        $user = \ORM::for_table('users')->where('name',$username)->find_one();
+        
+        return ! $user;
+    }
+    
     
     public function getUsers($quizid = false)
     {

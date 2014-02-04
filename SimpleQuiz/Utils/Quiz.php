@@ -17,11 +17,9 @@ class Quiz implements Base\QuizInterface {
     protected $_questions = array();
     protected $_question;
     protected $_users;
-    protected $_leaderboard;
     
-    public function __construct(\Slim\Helper\Set $container)
+    public function __construct()
     {
-        $this->_leaderboard = $container->leaderboard;
     }
     
     public function setId($id)
@@ -190,7 +188,7 @@ class Quiz implements Base\QuizInterface {
     //following 2 methods to be combined
     public function populateUsers() 
     {
-        $this->_users = $this->_leaderboard->getMembers($this->_id);
+        $this->_users = LeaderBoard::getMembers($this->_id);
     }
     
     public function getUsers()
@@ -200,22 +198,13 @@ class Quiz implements Base\QuizInterface {
     
     public function getLeaders($num)
     {
-        return $this->_leaderboard->getMembers($this->_id, $num);
-    }
-    
-    public function registerUser($username)
-    {
-        foreach ($this->_users as $user) {
-            if ($user['name'] == $username) {
-                return false;
-            }
-        }
-        return true;
+        usort($this->_users, 'memberSort');
+        return array_slice($this->_users, 0, $num, true);
     }
     
     public function addQuizTaker($user,$score,$start,$end,$timetaken)
     {
-        $this->_leaderboard->addMember($this->_id, $user,$score,$start,$end,$timetaken);
+        LeaderBoard::addMember($this->_id, $user,$score,$start,$end,$timetaken);
         return true;
     }
 }

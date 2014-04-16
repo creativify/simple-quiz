@@ -13,7 +13,7 @@
             <form id="questionBox" method="post" action="<?php echo $root; ?>/quiz/process">
                 <ul>
                 <?php 
-                $shuffledAnswers = shuffle_assoc($answers);
+                $shuffledAnswers = \SimpleQuiz\Utils\Base\Helpers\General::shuffleAssoc($answers);
 
                 $acount = 0;
                 foreach ($shuffledAnswers as $answer) 

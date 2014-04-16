@@ -82,7 +82,15 @@ class Simple implements Base\SimpleInterface {
      * @param string 
      * @return bool
      */
-    public function registerUser($username)
+    public function userExists($username)
+    {
+        //will return true if matching record found, false otherwise
+        $user = \ORM::for_table('users')->where('name',$username)->find_one();
+        
+        return $user;
+    }
+    
+    public function loginUser($username, $password)
     {
         //will return false if no matching record found
         $user = \ORM::for_table('users')->where('name',$username)->find_one();

@@ -198,7 +198,7 @@ class Quiz implements Base\QuizInterface {
     
     public function getLeaders($num)
     {
-        usort($this->_users, 'memberSort');
+        usort($this->_users, '\SimpleQuiz\Utils\Base\Helpers\General::memberSort');
         return array_slice($this->_users, 0, $num, true);
     }
     

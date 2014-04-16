@@ -1,5 +1,5 @@
 <?php 
-    include'header.php';
+    include 'header.php';
     $numquestions = count($quiz->getQuestions());
     $leadersToShow = 10;
 ?>
@@ -12,6 +12,7 @@
           <p>For each question, choose an answer and click <strong>'Submit Answer'</strong>. You'll then be given the next question.</p>
           <p>There are <?php echo $numquestions; ?> questions, so let's get cracking!</p>
           <p>You'll get your score at the end of the test.</p>
+          <p><a href="<?php echo $root; ?>/quiz/<?php echo $quiz->getId(); ?>/test" class="btn btn-primary">Start The Quiz</a></p>
           <div id="leaders-score">
                 <h4>Top <?php echo $leadersToShow; ?> Scorers</h4>
                 <div class="row">
@@ -36,21 +37,21 @@
                 </div>
             </div><!-- leaders-score-->
         </div>
-        <div class="col-md-3 col-md-offset-2 col-md-pull-5">
+<!--        <div class="col-md-3 col-md-offset-2 col-md-pull-5">
           <h2>Start The Quiz</h2>
-            <form id="questionBox" method="post" action="<?php echo $root; ?>/quiz/process">
-                <!--<p>If you want worldwide glory and fame, register a username below.</p>--> 
+            <form id="questionBox" method="post" action="<?php #echo $root; ?>/quiz/process">
+                <p>If you want worldwide glory and fame, register a username below.</p> 
                 <p>
                     <label for="username">Create A Username:</label><br />
                     <input type="text" id="username" class="form-control" name="username" placeholder="Username" />
                     <input type="hidden" name="register" value="TRUE" />
                 </p>
                 <p>
-                <input type="hidden" name="quizid" value="<?php echo $quiz->getId(); ?>" />
+                <input type="hidden" name="quizid" value="<?php #echo $quiz->getId(); ?>" />
                     <input type="submit" id="submitstart" class="btn btn-primary" value="Start Quiz" /></p>
             </form> 
-            <p id="helper"><?php echo $error; ?></p>
-        </div><!-- /.col-lg-4 -->
+            <p id="helper"><?php# echo $error; ?></p>
+        </div> /.col-lg-4 -->
       </div><!-- /.row -->
         
     </div><!--container-->

@@ -1,5 +1,4 @@
 <?php
-//index.php
 ini_set('error-reporting', E_ALL);
 ini_set('display_errors', 1);
 require '../vendor/autoload.php';
@@ -18,6 +17,7 @@ $app = new \Slim\Slim(array(
         ));
 
 require '../routes/public.php';
+require '../routes/quiz.php';
 require '../routes/admin.php';
 
 $app->session = $session;

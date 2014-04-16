@@ -17,7 +17,9 @@ interface SimpleInterface {
     
     public function getCategoryQuizzes($id);
     
-    public function registerUser($username);
+    public function userExists($username);
+    
+    public function loginUser($username, $password);
     
     public function getUsers($quizid = false);
     

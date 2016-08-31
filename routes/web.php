@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+Route::get('/', 'RootController@index');
+Route::get('/home', 'HomeController@index');
+Route::get('/quizzes', 'QuizController@index');

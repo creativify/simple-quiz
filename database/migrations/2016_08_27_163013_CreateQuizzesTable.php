@@ -17,7 +17,7 @@ class CreateQuizzesTable extends Migration
             $table->increments('id');
             $table->string('name', 50);
             $table->text('description');
-            $table->tinyInteger('category');
+            $table->integer('category_id')->unsigned();
             $table->boolean('active');
             $table->timestamps();
             $table->index('id');

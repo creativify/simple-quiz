@@ -7,7 +7,7 @@
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
-                    <h1>Simple Quiz</h1>
+                    <h1>Quizzes</h1>
                     <p>A simple framework for creating and displaying quizzes. Written in PHP.</p>
                 </div>
             </div><!--/span-->
@@ -18,8 +18,8 @@
                     <div class="list-group">
                         @foreach ($quizzes as $quiz)
                             <a href="/quizzes/{{$quiz->id}}" class="list-group-item">
-                            <h4 class="list-group-item-heading">{{$quiz->name}}</h4>
-                            <p class="list-group-item-text">{{$quiz->description}}</p>
+                                <h4 class="list-group-item-heading">{{$quiz->name}}</h4>
+                                <p class="list-group-item-text">{{$quiz->description}}</p>
                             </a>
                         @endforeach
                     </div>

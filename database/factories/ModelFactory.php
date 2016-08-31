@@ -21,3 +21,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->defineAs(App\User::class, 'admin', function () use ($factory) {
+    $user = $factory->raw(App\User::class);
+
+    return array_merge($user, ['admin' => true]);
+});

@@ -1,27 +1,50 @@
-# Laravel PHP Framework
+# [Simple-Quiz](https://simplequiz.co.uk)
+[![Software License](http://img.shields.io/badge/license-apache2-brightgreen.svg)](LICENSE)
+[![Build Status](https://travis-ci.org/ElanMan/simple-quiz.png?branch=master)](https://travis-ci.org/ElanMan/simple-quiz)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/77dcca19-1dd0-4a47-86b7-1ac6142e1bbd/mini.png)](https://insight.sensiolabs.com/projects/77dcca19-1dd0-4a47-86b7-1ac6142e1bbd)
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Simple-Quiz is a simple framework for creating quizzes for the web, created and maintained by [Ben Hall](http://twitter.com/elanman).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+PHP version > 5.4 is required
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-## Official Documentation
+## Quick start
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Three quick start options are available:
 
-## Contributing
+* [Download the latest release (github)](https://github.com/elanman/simple-quiz/releases/latest).
+* [Download the latest release (sourceforge)](https://sourceforge.net/projects/simple-quiz/).
+* Clone the repo: `git clone https://github.com/elanman/simple-quiz.git`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Installation
 
-## Security Vulnerabilities
+### Get The Code.
+* If you are downloading from SourceForge, all project dependencies are bundled with the project.
+If, however, you are cloning from GitHub or downloading the release zip file, you must run 'composer install' to 
+ download all of the dependencies.
+* If you don't know what composer is, take a look here: [Composer](https://getcomposer.org/)
+* Unpack the downloaded code zip archive.
+* Place the contents of the /public directory inside your document root.
+* All other directories should be placed outside of the document root and not accessible via a web browser (look at the above diagram to see the structure).
+* The mod_rewrite module (if using apache server) or [URL Rewrite](http://www.iis.net/downloads/microsoft/url-rewrite) module (if using IIS) will need to be enabled in 
+your server configuration.
+* Create a MySQL database called 'simple-quiz'
+* Import simple-quiz.sql into MySQL using a tool like phpmyadmin or using the MySQL 'source' command.
+* Change credentials in /SimpleQuiz/Utils/Base/SampleConfig.php.
+* Rename SampleConfig.php to Config.php
+* Default web admin user is example@gmail.com with password of 123456
+* Navigate to the web accessible folder in your browser.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## Twitter Stuff
++ <http://twitter.com/QuizSimple>
 
-## License
+## Authors
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+**Ben Hall**
+
++ <http://twitter.com/elanman>
++ <http://github.com/elanman>
+
+## Copyright and license
+
+Copyright 2013 Ben Hall under [the Apache 2.0 license](LICENSE).

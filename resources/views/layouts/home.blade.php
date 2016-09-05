@@ -34,11 +34,12 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="dropdown active">
-                            <a href="/categories/" class="dropdown-toggle"
+                            <a href="{{ url('/categories') }}" class="dropdown-toggle"
                                data-toggle="dropdown">Categories <b class="caret"></b></a>
                             <ul class="dropdown-menu">
+                                <li><a href="{{ url('/categories') }}">All</a></li>
                                 @foreach ($categories as $category)
-                                    <li><a href="/categories/{{$category->id}}">{{$category->name}}</a></li>
+                                    <li><a href="{{ url('/categories/' . $category->id)}}">{{$category->name}}</a></li>
                                 @endforeach
                             </ul>
                         </li>

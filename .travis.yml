@@ -1,9 +1,19 @@
-before_script:
-  - mysql -e 'create database `simple-quiz`;use `simple-quiz`;source simple-quiz.sql;'
-  - composer self-update
-  - composer install --no-interaction --prefer-source --no-dev
 language: php
 php:
+  - "5.6"
   - "5.5"
   - "5.4"
-  - "5.3"
+
+before_script:
+  - cp .env.travis .env
+  - mysql -e 'create database `simple-quiz`;'
+  - composer self-update
+  - composer install --no-interaction --prefer-source --no-dev
+  - chmod -R 777 app/storage
+script:
+  - php artisan migrate --env=testing --no-interaction -vvv
+  - php artisan db:seed --env=testing --no-interaction -vvv
+  - vendor/bin/phpunit
+
+matrix:
+  - fast_finish: true

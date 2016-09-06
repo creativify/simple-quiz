@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return (bool) $this->attributes['admin'];
     }
+
+    public function quizzes()
+    {
+        return $this->belongsToMany('App\Quiz');
+    }
 }

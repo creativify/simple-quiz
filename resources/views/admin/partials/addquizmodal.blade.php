@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Add A New Quiz:</h4>
             </div>
-            <form id="quizadd" method="post" action="{{ url('admin/quiz/create') }}">
+            <form id="quizadd" method="post" action="{{ url('admin/quiz/') }}">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <p><label for="quizname">Quiz Name:</label>

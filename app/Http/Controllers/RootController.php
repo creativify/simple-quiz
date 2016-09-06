@@ -12,7 +12,7 @@ class RootController extends Controller
 {
     public function index() {
         $categories = Category::all();
-        $quizzes = Quiz::all();
+        $quizzes = Quiz::active()->orderBy('updated_at', 'desc')->get();
         return view('welcome', ['categories' => $categories, 'quizzes' => $quizzes]);
     }
 

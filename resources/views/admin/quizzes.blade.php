@@ -3,13 +3,19 @@
 @section('content')
     <div class="container">
         <div class="row">
+            @if (session('statuserror'))
+                <div id="updater" class="alert alert-success">
+                    {{ session('statuserror') }}
+                </div>
+            @endif
+            @if (session('statussuccess'))
+                <div id="updater" class="alert alert-success">
+                    {{ session('statussuccess') }}
+                </div>
+            @endif
             <div id="ajaxupdater" class="alert"></div>
             @include('admin.partials.sidenav')
             <div class="col-md-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Welcome Quizmaster!</div>
-                    <div class="panel-body">Be careful; with great power comes great responsibility.</div>
-                </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">Quizzes</div>
                     <table id="quizzes" class="table table-striped">
@@ -29,7 +35,7 @@
                                     <td>{{$quiz->category->name}}</td>
                                     <td><span class="glyphicon {{$quiz->active ? 'glyphicon-ok-circle' : 'glyphicon-remove-circle'}}"></span></td>
                                     <td><a href="{{ url('/admin/quiz/' . $quiz->id) }}" data-quiz-id="{{$quiz->id}}"
-                                           title="Edit Questions" class="edit btn btn-default btn-primary"><span
+                                           title="Edit Quiz" class="edit btn btn-default btn-primary"><span
                                                     class="glyphicon glyphicon-pencil"></span></a>
                                         <button data-quiz-id="{{$quiz->id}}" title="Delete Quiz" class="remove btn
                                                 btn-default btn-danger" type="button">

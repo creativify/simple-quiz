@@ -29,6 +29,21 @@ class Quiz extends Model
         return $this->hasMany('\App\Question');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
+    /**
+     * Scope a query to only include active users.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
     public function isActive()
     {
         return (bool) $this->active;

@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Quiz;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -28,12 +26,24 @@ class AdminQuizController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Requests\StoreQuiz  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\StoreQuiz $request)
     {
-        //
+        $quiz = new Quiz();
+        try{
+            $quiz->name = $request->input('quizname');
+            $quiz->description = $request->input('description');
+            $quiz->active = $request->input('active');
+            $quiz->category_id = $request->input('category');
+            $quiz->save();
+
+            return redirect()->route('adminquizzes')->with('statussuccess', 'Quiz has been created');
+        }
+        catch (\Exception $e) {
+            return redirect()->route('adminquizzes')->with('statuserror', 'There was an error');
+        }
     }
 
     /**

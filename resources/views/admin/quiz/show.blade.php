@@ -32,8 +32,9 @@
                         @endif
                     </li>
                     <li class="list-group-item"><strong>Number Of Questions</strong>: <span
-                                class="badge">{{count($quiz->questions)}}</span></li>
-                    <li class="list-group-item"><strong>Times Taken</strong>: <span class="badge">{{count($quiz->users)}}
+                                class="badge">{{$quiz->questions->count()}}</span></li>
+                    <li class="list-group-item"><strong>Times Taken</strong>: <span
+                                class="badge">{{$quiz->users->count()}}
                     </span></li>
                 </ul>
                 <button id="editquiz" title="Edit Quiz Details" type="button" class="btn btn-primary">Edit Quiz Details <span class="glyphicon glyphicon-pencil"></span></button>

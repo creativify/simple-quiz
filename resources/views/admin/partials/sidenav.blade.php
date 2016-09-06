@@ -5,18 +5,18 @@
         <div class="list-group">
             <a href="{{ url('/admin/quizzes') }}" class="list-group-item @if (Request::is('admin/quizzes') ) active
 @endif">
-                <span class="badge">{{ count($quizzes) }}</span>
+                <span class="badge">{{ $quizzes->count() }}</span>
                 Quizzes
             </a>
             <a href="{{ url('/admin/categories') }}" class="list-group-item @if (Request::is('admin/categories') )
                     active
 @endif">
-                <span class="badge">{{ count($categories) }}</span>
+                <span class="badge">{{ $categories->count() }}</span>
                 Categories
             </a>
             <a href="{{ url('/admin/users') }}" class="list-group-item @if (Request::is('admin/users') ) active
 @endif">
-                <span class="badge">{{ count($users) }}</span>
+                <span class="badge">{{ $users->count() }}</span>
                 Users
             </a>
         </div>

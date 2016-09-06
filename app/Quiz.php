@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Quiz extends Model
 {
+    use SoftDeletes;
 
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
      *
@@ -18,11 +21,16 @@ class Quiz extends Model
 
     public function category()
     {
-        return $this->hasOne('\App\Category');
+        return $this->belongsTo('\App\Category');
     }
 
     public function questions()
     {
         return $this->hasMany('\App\Question');
+    }
+
+    public function isActive()
+    {
+        return (bool) $this->active;
     }
 }

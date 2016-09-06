@@ -1,11 +1,12 @@
 # [Simple-Quiz](https://simplequiz.co.uk)
 [![Software License](http://img.shields.io/badge/license-apache2-brightgreen.svg)](LICENSE)
-[![Build Status](https://travis-ci.org/ElanMan/simple-quiz.png?branch=master)](https://travis-ci.org/ElanMan/simple-quiz)
+[![Build Status](https://travis-ci.org/ElanMan/simple-quiz.png?branch=laravel)](https://travis-ci
+.org/ElanMan/simple-quiz)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/77dcca19-1dd0-4a47-86b7-1ac6142e1bbd/mini.png)](https://insight.sensiolabs.com/projects/77dcca19-1dd0-4a47-86b7-1ac6142e1bbd)
 
 Simple-Quiz is a simple framework for creating quizzes for the web, created and maintained by [Ben Hall](http://twitter.com/elanman).
 
-PHP version > 5.4 is required
+PHP version > 5.6 is required
 
 
 ## Quick start

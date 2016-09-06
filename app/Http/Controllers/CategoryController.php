@@ -11,18 +11,25 @@ use App\Http\Requests;
 class CategoryController extends Controller
 {
 
+    protected $categories, $quizzes;
+    /**
+     * CategoryController constructor.
+     */
+    public function __construct()
+    {
+        $this->categories = Category::all();
+        $this->quizzes = Quiz::where('active', true)->get();
+    }
+
     public function index()
     {
-        $categories = Category::all();
-        $quizzes = Quiz::where('active', true)->get();
-        return view('category.index', ['categories' => $categories, 'quizzes' => $quizzes]);
+        return view('category.index', ['categories' => $this->categories, 'quizzes' => $this->quizzes]);
     }
 
     public function show($id)
     {
         $category = Category::findOrFail($id);
-        $categories = Category::all();
-        $quizzes = Quiz::where('active', true)->get();
-        return view('category.show', ['categories' => $categories, 'quizzes' => $quizzes, 'category' => $category]);
+        return view('category.show', ['categories' => $this->categories, 'quizzes' => $this->quizzes, 'category' =>
+            $category]);
     }
 }

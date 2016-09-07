@@ -42,4 +42,9 @@ class AdminController extends Controller
     {
         return view('admin.users', $this->allData);
     }
+
+    public function showCategories()
+    {
+        return view('admin.categories', $this->allData);
+    }
 }

@@ -12,8 +12,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/', 'AdminController@index')->name('adminroot');
     Route::get('/quizzes', 'AdminController@showQuizzes')->name('adminquizzes');
     Route::get('/users', 'AdminController@showUsers')->name('adminusers');
+    Route::get('/categories', 'AdminController@showCategories')->name('admincategories');
     Route::resource('/quiz', 'AdminQuizController', ['only' => [
         'show', 'store', 'update', 'destroy'
     ]]);
-    //Route::delete('/quiz', 'AdminQuizController@destroy')->name('deletequiz');
+    Route::resource('/category', 'AdminCategoryController', ['only' => [
+        'store', 'update', 'destroy'
+    ]]);
 });

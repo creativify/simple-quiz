@@ -5,6 +5,7 @@ $(function(){
     var addanswer = $('#addanswer');
     var addquestion = $('#addquestion');
     var addquiz = $('#addquiz');
+    var addcategory = $('#addcategory');
     var questionaddform = $('#questionadd');
     var aform = $('form#answeredit');
     var saveprompt = "<div class=\"alert alert-warning\">Click 'Save' to make the changes permanent.</div>";
@@ -99,7 +100,6 @@ $(function(){
 
         var quizid = $(this).attr("data-quiz-id");
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        console.log(CSRF_TOKEN);
         if (window.confirm("This can't be undone. OK?") ) {
             var parenttr = $(this).parents('tr.quiz');
             parenttr.find('td').html('<img src="/images/ajax-loader.gif" />');
@@ -124,6 +124,49 @@ $(function(){
             });
         }
         
+
+    });
+
+    $('table#categories').on('click', 'a.edit', function (e) {
+        e.preventDefault();
+        var targetUrl = $(this).attr('href');
+        var parenttr = $(this).parents('tr.category');
+        var catname = parenttr.find('strong.name').text();
+        var catdescription = parenttr.find('td.description').text();
+        $('#categoryedit').attr('action', targetUrl);
+        $('#editcategoryname').val(catname);
+        $('#editdescription').val(catdescription);
+        $('#category-edit-modal').modal();
+    });
+
+    $('table#categories').on('click', '.remove', function() {
+
+        var categoryid = $(this).attr("data-category-id");
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        if (window.confirm("This will remove the category and all quizzes that belong to the category. This can't be undone. OK?") ) {
+            var parenttr = $(this).parents('tr.category');
+            parenttr.find('td').html('<img src="/images/ajax-loader.gif" />');
+
+            $.ajax({
+                url: '/admin/category/' + categoryid,
+                type: "POST",
+                cache: false,
+                data : {'_method' : 'DELETE', '_token' : CSRF_TOKEN},
+                dataType: "json",
+                success: function(response) {
+                    console.log(response);
+                    if (typeof response.success !== 'undefined') {
+
+                        parenttr.fadeOut(2000).remove();
+                        // flash success message
+                        $('#ajaxupdater').addClass("alert-success").html(response.success).show('slow').delay(2000).hide('slow');
+                    } else {
+                        $('#ajaxupdater').addClass("alert-danger").html(response.error).show('slow').delay(2000).hide('slow');
+                    }
+                }
+            });
+        }
+
 
     });
     
@@ -157,11 +200,16 @@ $(function(){
         $('#q-add-modal').modal();
     });
     
-    //the button to add another question for this quiz
+    //the button to add another quiz
     addquiz.on('click', function() {
         $('#quiz-add-modal').modal();
     });
-    
+
+    //the button to add another quiz
+    addcategory.on('click', function() {
+        $('#category-add-modal').modal();
+    });
+
     // on answer form submission
     aform.on('submit', function(e) {
         

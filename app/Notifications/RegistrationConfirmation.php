@@ -2,12 +2,13 @@
 
 namespace App\Notifications;
 
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class RegistrationConfirmation extends Notification
+class RegistrationConfirmation extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -38,10 +39,10 @@ class RegistrationConfirmation extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail(User $notifiable)
     {
         return (new MailMessage)
-                    ->line('Thanks for registering with Simple Quiz.')
-                    ->action('Check out the latest quizzes now', 'http://simple/quizzes');
+            ->line($notifiable->name. ', thanks for registering with Simple Quiz.')
+            ->action('Edit your profile', 'http://simple/profile/' . $notifiable->email);
     }
 }
